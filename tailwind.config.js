@@ -10,10 +10,10 @@ module.exports = {
         "white-gradient": `linear-gradient(360.58deg, #FFFFFF 43.76%, rgba(255, 255, 255, 0) 106.82%)`,
       },
       fontFamily: {
-        primary: "Helvetica Neue Medium",
-        "helvetica-light": "Helvetica Neue Light",
-        "helvetica-medium": "Helvetica Neue Medium",
-        "helvetica-bold": "Helvetica Neue Bold",
+        primary: "Rubik",
+        "finger-paint": "Finger Paint",
+        rubik: "Rubik",
+        inter: "Inter",
       },
       fontWeight: {
         light: 300,

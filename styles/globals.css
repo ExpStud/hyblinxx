@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Helvetica Neue Bold';
-  src: url('/public/fonts/helveticaneue/HelveticaNeue\ Bold.tff') format('truetype');
-  font-weight: 700;
+  font-family: 'Finger Paint';
+  src: url('/public/fonts/fingerpaint/FingerPaint-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
 }
 @font-face {
