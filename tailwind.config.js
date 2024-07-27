@@ -26,6 +26,17 @@ module.exports = {
         italic: "italic", // Add "italic" style to the font family
       },
       colors: {
+        //custom
+        "h-purple": {
+          300: "#9883E5",
+          700: "#4B4B66",
+          750: "#4C4B63",
+          900: "#2C2838",
+        },
+        "h-yellow": {
+          300: "#EEFA85", //stars
+          400: "#EDF67D", //logo font
+        },
         //template
         "custom-black": "#121212",
         "custom-white": "#F3F1EA",
