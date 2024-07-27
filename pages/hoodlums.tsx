@@ -2,7 +2,7 @@ import { PageLayout, AboutView } from "@components";
 import { NextPage } from "next";
 import { useState } from "react";
 
-const Characters: NextPage = () => {
+const Hoodlums: NextPage = () => {
   const [assets, setAssets] = useState<boolean[]>([]);
 
   return (
@@ -12,4 +12,4 @@ const Characters: NextPage = () => {
   );
 };
 
-export default Characters;
+export default Hoodlums;
