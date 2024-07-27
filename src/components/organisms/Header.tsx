@@ -6,13 +6,14 @@ import {
   Variants,
 } from "framer-motion";
 import { HeaderContent } from "@components";
+
 interface Props {
   showHeader?: boolean;
   type?: string;
 }
 
 const Header: FC<Props> = (props: Props) => {
-  const { type = "absolute", showHeader = true } = props;
+  const { type = "relative", showHeader = true } = props;
 
   const [animateHeader, setAnimateHeader] = useState<boolean>(true);
 
@@ -78,7 +79,7 @@ const Header: FC<Props> = (props: Props) => {
 
   return (
     <header
-      className={`top-0 z-10 transition-all duration-500 ${
+      className={`z-10 w-full flex flex-col items-center self-center  my-4 lg:my-10 px-3 lg:mx-10  ${
         type === "scroll" ? "fixed" : type
       } `}
     >

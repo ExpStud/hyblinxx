@@ -24,7 +24,7 @@ const PageLayout: FC<Props> = (props: Props) => {
     footer = true,
     fixed = false,
     absolute = false,
-    headerType = "absolute",
+    headerType,
     children,
     assets = [],
   } = props;
@@ -42,7 +42,7 @@ const PageLayout: FC<Props> = (props: Props) => {
   return (
     <ViewContext.Provider value={value}>
       <div
-        className={`flex flex-col min-h-[100svh] h-full justify-between overflow-none ${
+        className={`flex flex-col min-h-[100svh] w-screen max-w-screen justify-between items-center overflow-none  ${
           fixed ? "fixed inset-0" : absolute ? "absolute inset-0" : "relative"
         }`}
       >
@@ -57,14 +57,14 @@ const PageLayout: FC<Props> = (props: Props) => {
 
         {/* body */}
         <motion.main
-          className={`flex flex-col h-full w-full overflow-x-clip`}
+          className={`max-w flex flex-col flex-grow h-full w-full overflow-x-clip`}
           {...enterAnimation}
         >
           {children}
         </motion.main>
 
         {/* footer */}
-        {footer && <Footer />}
+        {/* {footer && <Footer />} */}
 
         {/* load screen */}
         {assets && <SplashScreen assets={assets} />}

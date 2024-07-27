@@ -1,12 +1,23 @@
 import { FC, useState } from "react";
-import { CloseIcon, Logo, Menu, MenuIcon } from "@components";
+import { CloseIcon, IconBar, Logo, Menu, MenuIcon, NavItem } from "@components";
 import { AnimatePresence } from "framer-motion";
+import { navigation } from "@constants";
 
 const HeaderContent: FC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+
   return (
-    <div className="w-screen flex items-center justify-between px-4 md:px-6 py-4 z-20">
+    <div className="w-full max-w-[1240px] h-12 md:h-16 flex items-center justify-between z-20 bg-h-purple-700/25 border border-h-purple-750/5 backdrop-blur-sm rounded-[32px] px-3.5 md:px-6">
       <Logo />
+      <div className="hidden md:flex gap-20 text-sm">
+        {navigation.map((item, index) => (
+          <NavItem key={index} href={item.href ?? "/"}>
+            {item.name}
+          </NavItem>
+        ))}
+      </div>
+      <IconBar />
+      {/*
       <AnimatePresence mode="wait">
         {!openMenu ? (
           <div
@@ -26,7 +37,7 @@ const HeaderContent: FC = () => {
         )}
       </AnimatePresence>
 
-      <Menu toggleMenu={setOpenMenu} open={openMenu} />
+      <Menu toggleMenu={setOpenMenu} open={openMenu} /> */}
     </div>
   );
 };

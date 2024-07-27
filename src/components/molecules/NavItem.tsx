@@ -52,8 +52,8 @@ const Item: FC<ItemProps> = (props: ItemProps) => {
       <div
         className={` transition-bg duration-300 my-5 p-0 ${
           isCurrent
-            ? "text-red-600"
-            : " text-gray-400 hover:text-white cursor-pointer"
+            ? "text-h-purple-750 cursor-default"
+            : " text-white hover:text-h-yellow-400 cursor-pointer"
         }`}
       >
         {children}

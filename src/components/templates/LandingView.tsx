@@ -16,7 +16,7 @@ const LandingView: FC<Props> = (props: Props) => {
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
-      <motion.div {...slideDown(showView)}>
+      {/* <motion.div {...slideDown(showView)}>
         <Image
           src="/images/logo.png"
           alt="EXP"
@@ -26,7 +26,7 @@ const LandingView: FC<Props> = (props: Props) => {
           onLoadingComplete={() => handleAssetLoad(0, setAssets)}
         />
       </motion.div>
-      <IconBar className="lg:hidden absolute bottom-3" />
+      <IconBar className="lg:hidden absolute bottom-3" /> */}
     </div>
   );
 };

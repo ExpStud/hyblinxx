@@ -1,17 +1,13 @@
-import { motion } from "framer-motion";
 import { FC, HTMLAttributes } from "react";
-import Image from "next/image";
-import { TwitterIcon, DiscordIcon, ExpIcon } from "@components";
+import { TwitterIcon, DiscordIcon, ExpIcon, ExchangeIcon } from "@components";
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  showExchange?: boolean;
-}
+interface Props extends HTMLAttributes<HTMLDivElement> {}
 const IconBar: FC<Props> = (props: Props) => {
-  const { showExchange = true, className } = props;
+  const { className } = props;
   return (
-    <div className={`flex items-center justify-center gap-4 ${className}`}>
-      <DiscordIcon url={""} />
-      <TwitterIcon url={""} />
+    <div className={`flex items-center justify-center gap-6 ${className}`}>
+      <ExchangeIcon />
+      <TwitterIcon />
     </div>
   );
 };

@@ -10,7 +10,7 @@ module.exports = {
         "white-gradient": `linear-gradient(360.58deg, #FFFFFF 43.76%, rgba(255, 255, 255, 0) 106.82%)`,
       },
       fontFamily: {
-        primary: "Rubik",
+        primary: "Inter",
         "finger-paint": "Finger Paint",
         rubik: "Rubik",
         inter: "Inter",

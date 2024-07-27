@@ -4,28 +4,22 @@
 
 @font-face {
   font-family: 'Finger Paint';
-  src: url('/public/fonts/fingerpaint/FingerPaint-Regular.ttf') format('truetype');
+  src: url('../public/fonts/fingerpaint/FingerPaint-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica Neue Medium';
-  src: url('/public/fonts/helveticaneue/HelveticaNeue\ Medium.ttf') format('truetype');
-  font-weight: 600;
+  font-family: 'Inter';
+  src: url('../public/fonts/inter/Inter-Medium.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Helvetica Neue Light';
-  src: url('/public/fonts/helveticaneue/HelveticaNeue\ Light.ttf') format('truetype');
-  font-weight: 300;
+  font-family: 'Rubik';
+  src: url('../public/fonts/rubik/Rubik-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
-}
-@font-face {
-  font-family: 'Helvetica Neue Light Italic';
-  src: url('/public/fonts/helveticaneue/HelveticaNeueIt.ttf') format('truetype');
-  font-weight: 300;
-  font-style: italic;
-}
+} 
 a {
   color: inherit;
   text-decoration: none;
@@ -37,7 +31,7 @@ a {
 
 @layer base {
   html {
-    @apply scroll-smooth bg-main bg-cover bg-fixed bg-custom-black text-custom-white font-primary;
+    @apply scroll-smooth bg-main bg-cover bg-fixed bg-h-purple-900 text-custom-white font-inter uppercase;
   }
   h1 {
     @apply font-primary;
@@ -124,4 +118,13 @@ html {
 }
 .transition-200{
   @apply transition-all duration-300;
+}
+
+/* Custom */
+
+.max-w {
+  @apply max-w-[1920px] self-center;
+}
+.hover-fill-yellow {
+  @apply transition-all duration-200 fill-white group-hover:fill-h-yellow-400;
 }
