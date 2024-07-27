@@ -5,7 +5,9 @@ interface Props extends HTMLAttributes<HTMLDivElement> {}
 const IconBar: FC<Props> = (props: Props) => {
   const { className } = props;
   return (
-    <div className={`flex items-center justify-center gap-6 ${className}`}>
+    <div
+      className={`flex items-center justify-center gap-6 ${className ?? ""}`}
+    >
       <ExchangeIcon />
       <TwitterIcon />
     </div>
