@@ -1,13 +1,19 @@
-import { FC, useState } from "react";
-import { CloseIcon, IconBar, Logo, Menu, MenuIcon, NavItem } from "@components";
-import { AnimatePresence } from "framer-motion";
+import { FC } from "react";
+import { IconBar, Logo, Menu, MenuIcon, NavItem } from "@components";
+import { useCycle } from "framer-motion";
 import { navigation } from "@constants";
 
 const HeaderContent: FC = () => {
-  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [open, setOpen] = useCycle(false, true);
 
   return (
-    <div className="w-full max-w-[1240px] h-12 md:h-16 flex items-center justify-between z-20 bg-h-purple-700/25 border border-h-purple-750/5 backdrop-blur-sm rounded-[32px] px-3.5 md:px-6">
+    <div
+      className={`w-full max-w-[1240px] h-12 md:h-16 flex items-center justify-between z-20 rounded-[32px] px-3.5 md:px-6 transition-1000 border ${
+        open
+          ? "bg-transparent border-transparent"
+          : "bg-h-purple-700/25  border-h-purple-750/5 backdrop-blur-sm "
+      }`}
+    >
       {/* className="w-1/4" */}
       <Logo />
       {/*  w-1/2 */}
@@ -19,28 +25,10 @@ const HeaderContent: FC = () => {
         ))}
       </div>
       {/* className="w-1/4 !justify-end" */}
-      <IconBar />
-      {/*
-      <AnimatePresence mode="wait">
-        {!openMenu ? (
-          <div
-            key="menu-icon"
-            onClick={() => setOpenMenu(true)}
-            className="cursor-pointer"
-          >
-            <MenuIcon />
-          </div>
-        ) : (
-          <div
-            onClick={() => setOpenMenu(false)}
-            className="cursor-pointer z-[100]"
-          >
-            <CloseIcon />
-          </div>
-        )}
-      </AnimatePresence>
+      <IconBar className="hidden md:flex" />
 
-      <Menu toggleMenu={setOpenMenu} open={openMenu} /> */}
+      <MenuIcon className="md:hidden" onClick={() => setOpen()} />
+      <Menu toggleMenu={setOpen} open={open} />
     </div>
   );
 };
