@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import {
   PageHead,
   Header,
@@ -9,6 +9,8 @@ import {
 import { enterAnimation } from "@constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { ViewContext } from "@contexts";
+import { changeTheme, theme } from "@utils";
+import { useRouter } from "next/router";
 
 interface Props {
   children: ReactNode;
@@ -38,6 +40,12 @@ const PageLayout: FC<Props> = (props: Props) => {
     showModal,
     setShowModal,
   };
+
+  const router = useRouter();
+  useEffect(() => {
+    if (router.pathname === "/") changeTheme(theme[0]);
+    else changeTheme(theme[1]);
+  }, [router.pathname]);
 
   return (
     <ViewContext.Provider value={value}>

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import  "themes/light.css";
+@import  "themes/dark.css";
+
 @font-face {
   font-family: 'Finger Paint';
   src: url('../public/fonts/fingerpaint/FingerPaint-Regular.ttf') format('truetype');
@@ -37,7 +40,8 @@ a {
 
 @layer base {
   html {
-    @apply scroll-smooth bg-main bg-cover bg-fixed bg-h-purple-900 text-custom-white font-inter uppercase;
+    --color-primary: "#2C2838";
+    @apply scroll-smooth bg-main bg-cover bg-fixed bg-primary text-custom-white font-inter uppercase;
   }
   h1 {
     @apply font-primary;

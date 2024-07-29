@@ -27,6 +27,7 @@ module.exports = {
         italic: "italic", // Add "italic" style to the font family
       },
       colors: {
+        primary: "var(--color-primary)",
         //custom
         "h-purple": {
           300: "#9883E5",
