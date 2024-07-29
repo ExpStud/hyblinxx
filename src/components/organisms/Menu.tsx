@@ -1,8 +1,9 @@
 import { FC, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CloseIcon, NavItem } from "@components";
+import { CloseIcon, IconBar, NavItem } from "@components";
 import { useLockBodyScroll, useOutsideAlerter, useWindowSize } from "@hooks";
 import { menuChildVariants, mobileMenuParent, navigation } from "@constants";
+import Link from "next/link";
 
 interface Props {
   close: () => void;
@@ -23,6 +24,13 @@ const Menu: FC<Props> = (props: Props) => {
   useEffect(() => {
     if (winWidth >= 768) close();
   }, [winWidth]);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.style.backdropFilter = "blur(23px)";
+    }
+  }, [open]);
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       {open === true && (
@@ -39,25 +47,15 @@ const Menu: FC<Props> = (props: Props) => {
             transition: { duration: 0.35 },
             opacity: 1,
           }}
-          className="rounded-l-3xl bg-[#2F2E3D]/80 backdrop-blur-xl fixed top-0 right-0 z-50 h-[100svh]"
+          className="mobile-nav fixed top-0 right-0 z-50 h-[100svh]"
           ref={ref}
         >
-          <div
-            className="p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto"
-            // variants={fadeVariants}
-            // initial="closed"
-            // animate="open"
-            // exit="closed"
-
-            // variants={mobileMenuParent}
-            // initial={"hidden"}
-            // animate={"show"}
-            // exit={"closed"}
-          >
+          <div className="p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto">
             <CloseIcon
               onClick={() => close()}
               className="cursor-pointer z-50"
             />
+
             <motion.div
               className="flex flex-col flex-grow items-start gap-3"
               variants={mobileMenuParent}
@@ -65,20 +63,23 @@ const Menu: FC<Props> = (props: Props) => {
               animate={"show"}
               exit={"closed"}
             >
-              <motion.img
-                src="/images/icons/logo-text.svg"
-                width={184}
-                height={25}
-                alt="Hyblinxx"
-                className="mt-8 mb-5"
-                variants={menuChildVariants}
-              />
+              <Link href="/">
+                <motion.img
+                  src="/images/icons/logo-text.svg"
+                  width={184}
+                  height={25}
+                  alt="Hyblinxx"
+                  className="mt-8 mb-5"
+                  variants={menuChildVariants}
+                />
+              </Link>
               {navigation.map((item, index) => (
                 <NavItem key={index} href={item.href ?? "/"}>
                   {item.name}
                 </NavItem>
               ))}
             </motion.div>
+            <IconBar className="self-start" />
           </div>
         </motion.div>
       )}

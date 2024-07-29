@@ -131,7 +131,9 @@ html {
 }
 
 /* Custom */
-
+.absolute-center {
+  @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}
 .max-w {
   @apply max-w-[1920px] self-center;
 }
@@ -141,5 +143,6 @@ html {
 .mobile-nav {
   border-radius: 24px 0px 0px 24px;
   background: rgba(47, 46, 61, 0.78);
-  backdrop-filter: blur(22.649999618530273px);
+  backdrop-filter: blur(23px);
+  -webkit-backdrop-filter: blur(23px);
 }

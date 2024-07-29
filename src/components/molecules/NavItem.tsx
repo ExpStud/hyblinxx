@@ -51,7 +51,7 @@ const Item: FC<ItemProps> = (props: ItemProps) => {
   const { children, isCurrent } = props;
   return (
     <motion.div
-      className={`flex gap-2 justify-center items-center transition-bg duration-300 py-1 font-rubik font-semibold md:font-inter text-[20px] md:text-xs ${
+      className={`flex gap-2 justify-center items-center transition-bg duration-300 py-1 font-rubik font-semibold md:font-regular md:font-inter text-[20px] md:text-xs ${
         isCurrent
           ? "text-h-purple-750 cursor-default"
           : " text-white hover:text-h-yellow-400 cursor-pointer"

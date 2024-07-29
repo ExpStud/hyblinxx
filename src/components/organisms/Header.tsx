@@ -79,7 +79,7 @@ const Header: FC<Props> = (props: Props) => {
 
   return (
     <header
-      className={`z-10 w-full flex flex-col items-center self-center my-4 lg:my-10 px-3 lg:mx-10 ${
+      className={`z-50 w-full flex flex-col items-center self-center my-4 lg:my-10 px-3 lg:mx-10 ${
         type === "scroll" ? "fixed" : type
       } `}
     >
