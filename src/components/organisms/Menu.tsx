@@ -2,57 +2,92 @@ import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CloseIcon, IconBar, NavItem } from "@components";
 import Link from "next/link";
-import { useLockBodyScroll, useWindowSize } from "@hooks";
-import { fadeVariants, midExitAnimation, navigation } from "@constants";
-import { useOutsideAlerter } from "@hooks";
+import { useLockBodyScroll, useOutsideAlerter, useWindowSize } from "@hooks";
+import {
+  fadeVariants,
+  menuChildVariants,
+  midExitAnimation,
+  mobileMenuParent,
+  navigation,
+} from "@constants";
+import Image from "next/image";
 
 interface Props {
-  toggleMenu: () => void;
+  close: () => void;
   open: boolean;
 }
 
 const Menu: FC<Props> = (props: Props) => {
-  const { toggleMenu, open } = props;
+  const { close, open } = props;
   const [winWidth] = useWindowSize();
 
-  const isMobile: boolean = winWidth < 730;
+  const isMobile: boolean = winWidth < 640;
+  const ref = useRef<HTMLDivElement>(null);
   //stop page scroll (when modal or menu open)
   useLockBodyScroll(open);
+  useOutsideAlerter(ref, close);
 
+  console.log("open", open);
   return (
     <AnimatePresence mode="wait" initial={false}>
-      {open && (
+      {open === true && (
         <motion.div
           key="main-menu"
           initial={{ width: 0, opacity: 0 }}
-          animate={{ width: isMobile ? winWidth - 15 : 720, opacity: 1 }}
+          animate={{
+            width: isMobile ? 294 : 400,
+            opacity: 1,
+            transition: { duration: 0.45 },
+          }}
           exit={{
             width: 0,
-            transition: { duration: 0.2 },
+            transition: { duration: 0.35 },
             opacity: 1,
           }}
-          transition={{ duration: 0.4 }}
-          className="rounded-l-3xl bg-[#2F2E3D]/80 fixed top-0 right-0 z-50 h-[100svh]"
-          onClick={() => toggleMenu()}
+          className="rounded-l-3xl bg-[#2F2E3D]/80 backdrop-blur-xl fixed top-0 right-0 z-50 h-[100svh]"
+          ref={ref}
         >
           <motion.div
-            className="explorer-scroll px-4 sm:px-6 lg:px-10 py-6 relative h-full flex flex-col justify-between overflow-auto"
-            variants={fadeVariants}
-            initial="closed"
-            animate="open"
-            exit="closed"
+            className="p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto"
+            // variants={fadeVariants}
+            // initial="closed"
+            // animate="open"
+            // exit="closed"
+
+            // variants={mobileMenuParent}
+            // initial={"hidden"}
+            // animate={"show"}
+            // exit={"closed"}
           >
             <CloseIcon
-              onClick={() => toggleMenu()}
-              className="cursor-pointer self-end "
+              onClick={() => close()}
+              className="cursor-pointer z-50"
             />
-            <div className="mt-10 ml-2 mr-4 md:mx-6 flex flex-col flex-grow">
+            <motion.img
+              src="/images/icons/logo-text.svg"
+              width={184}
+              height={25}
+              alt="Hyblinxx"
+              className="mt-8 mb-5"
+              // variants={menuChildVariants}
+            />
+            <motion.div
+              className="flex flex-col flex-grow items-start gap-3"
+              variants={mobileMenuParent}
+              initial={"hidden"}
+              animate={"show"}
+              exit={"closed"}
+            >
               {navigation.map((item, index) => (
-                <NavItem key={index} href={item.href ?? "/"}>
+                <NavItem
+                  key={index}
+                  href={item.href ?? "/"}
+                  isMobile={isMobile}
+                >
                   {item.name}
                 </NavItem>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
       )}

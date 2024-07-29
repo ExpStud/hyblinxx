@@ -1,25 +1,31 @@
 import { FC, SVGProps } from "react";
 
-interface Props extends SVGProps<SVGSVGElement> {
-  size?: number;
-}
+interface Props extends SVGProps<SVGSVGElement> {}
 
 const CloseIcon: FC<Props> = (props: Props) => {
-  const { size = 50, className } = props;
+  const { ...svgProps } = props;
   return (
     <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
+      width="40"
+      height="40"
+      viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`transition-all duration-300 stroke-gray-300 hover:stroke-white stroke-light-gray ${className}`}
+      {...svgProps}
     >
+      <circle
+        cx="20"
+        cy="20"
+        r="19.2501"
+        fill="#3C394B"
+        stroke="#3C394B"
+        strokeWidth="1.49979"
+      />
       <path
-        d="M18 6L6 18M6 6L18 18"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M20.5126 21.501L15.4706 26.543C15.1777 26.8358 14.7029 26.8358 14.4101 26.543C14.1172 26.2501 14.1172 25.7753 14.4101 25.4825L19.452 20.4405L14.4098 15.3983L15.4703 14.3378L20.5126 19.38L25.5548 14.3378L26.6153 15.3983L21.5731 20.4405L26.615 25.4825C26.9079 25.7753 26.9079 26.2501 26.615 26.543C26.3222 26.8358 25.8474 26.8358 25.5545 26.543L20.5126 21.501Z"
+        fill="#EBE9F7"
       />
     </svg>
   );

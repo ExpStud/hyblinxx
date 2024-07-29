@@ -13,6 +13,7 @@ module.exports = {
         primary: "Inter",
         "finger-paint": "Finger Paint",
         rubik: "Rubik",
+        rubik: "Rubik",
         inter: "Inter",
       },
       fontWeight: {

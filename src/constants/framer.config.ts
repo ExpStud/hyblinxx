@@ -1,5 +1,50 @@
 import { Variants } from "framer-motion";
 
+
+export const mobileMenuParent = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.1, // This will delay the animation of each child by 0.1 seconds
+      delayChildren: 0.5,
+      staggerDirection: 1,
+    },
+  },
+  closed: {
+    opacity: 0,
+    transition: {
+      delay: 0,
+      duration: 0.1,
+      staggerChildren: 0.1, // This will reverse the order of the stagger on exit
+      staggerDirection: -1,
+    },
+  },
+};
+
+export const menuChildVariants = {
+  hidden: { opacity: 0, y: 0, x: 0, transition: { duration: 0.3 } },
+  show: { opacity: 1, y: 0, x: 0, transition: { duration: 0.3 } },
+  closed: { opacity: 0, y: 0, x: 0, transition: { duration: 0.3 } },
+};
+
+export const menuChild2Variants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.5 } },
+  closed: { opacity: 0, transition: { duration: 0.2 } },
+};
+
+
+export const fadeVariants = {
+  closed: {
+    opacity: 0,
+    transition: { duration: 0.2 },
+  },
+  open: { opacity: 1, transition: { delay: 0.5, duration: 0.5 } },
+};
+
+
 //click animations
 export const largeClickAnimation = {
   whileHover: { scale: 1.1 },
@@ -123,13 +168,6 @@ export const dropdownItemsAnimations = {
   },
 };
 
-export const fadeVariants = {
-  closed: {
-    opacity: 0,
-    transition: { duration: 0.2 },
-  },
-  open: { opacity: 1, transition: { delay: 0.5, duration: 0.5 } },
-};
 
 export const menuAnimation = {
   initial: { opacity: 0 },

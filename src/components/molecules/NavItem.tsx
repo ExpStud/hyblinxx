@@ -2,15 +2,24 @@ import { FC, ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { menuChildVariants } from "src/constants";
 
 interface Props {
   children: ReactNode;
   href: string;
   disabled?: boolean;
   isExternal?: boolean;
+  isMobile?: boolean;
 }
 const NavItem: FC<Props> = (props: Props) => {
-  const { children, href, disabled = false, isExternal = false } = props;
+  const {
+    children,
+    href,
+    disabled = false,
+    isExternal = false,
+    isMobile,
+  } = props;
 
   const router = useRouter();
   const isCurrent = router.pathname === href;
@@ -30,11 +39,15 @@ const NavItem: FC<Props> = (props: Props) => {
         <DisabledItem />
       ) : isExternal ? (
         <a href={href} rel="noreferrer" target="_blank">
-          <Item isCurrent={isCurrent}>{children}</Item>
+          <Item isCurrent={isCurrent} isMobile={isMobile}>
+            {children}
+          </Item>
         </a>
       ) : (
         <Link href={href}>
-          <Item isCurrent={isCurrent}>{children}</Item>
+          <Item isCurrent={isCurrent} isMobile={isMobile}>
+            {children}
+          </Item>
         </Link>
       )}
     </>
@@ -44,21 +57,21 @@ const NavItem: FC<Props> = (props: Props) => {
 interface ItemProps {
   children: ReactNode;
   isCurrent: boolean;
+  isMobile?: boolean;
 }
 const Item: FC<ItemProps> = (props: ItemProps) => {
-  const { children, isCurrent } = props;
+  const { children, isCurrent, isMobile } = props;
   return (
-    <div className="flex gap-2 justify-center items-center">
-      <div
-        className={` transition-bg duration-300 my-5 p-0 ${
-          isCurrent
-            ? "text-h-purple-750 cursor-default"
-            : " text-white hover:text-h-yellow-400 cursor-pointer"
-        }`}
-      >
-        {children}
-      </div>
-    </div>
+    <motion.div
+      className={`flex gap-2 justify-center items-center transition-bg duration-300 py-1 font-rubik font-semibold md:font-inter text-[20px] md:text-xs ${
+        isCurrent
+          ? "text-h-purple-750 cursor-default"
+          : " text-white hover:text-h-yellow-400 cursor-pointer"
+      }`}
+      variants={menuChildVariants}
+    >
+      {children}
+    </motion.div>
   );
 };
 
