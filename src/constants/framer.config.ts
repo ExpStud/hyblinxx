@@ -6,9 +6,10 @@ export const mobileMenuParent = {
   show: {
     opacity: 1,
     transition: {
-      duration: 0.5,
+      delay: 0.3,
+      duration: 1,
       staggerChildren: 0.1, // This will delay the animation of each child by 0.1 seconds
-      delayChildren: 0.5,
+      delayChildren: 0.2,
       staggerDirection: 1,
     },
   },
@@ -24,8 +25,8 @@ export const mobileMenuParent = {
 };
 
 export const menuChildVariants = {
-  hidden: { opacity: 0, y: 0, x: 0, transition: { duration: 0.3 } },
-  show: { opacity: 1, y: 0, x: 0, transition: { duration: 0.3 } },
+  hidden: { opacity: 0, y: 0, x: 0 },
+  show: { opacity: 1, y: 0, x: 0, transition: { duration: 0 } },
   closed: { opacity: 0, y: 0, x: 0, transition: { duration: 0.3 } },
 };
 
@@ -41,7 +42,7 @@ export const fadeVariants = {
     opacity: 0,
     transition: { duration: 0.2 },
   },
-  open: { opacity: 1, transition: { delay: 0.5, duration: 0.5 } },
+  open: { opacity: 1, transition: { delay: 0.5, duration: 1 } },
 };
 
 

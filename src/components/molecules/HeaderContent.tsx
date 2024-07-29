@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { IconBar, Logo, Menu, MenuIcon, NavItem } from "@components";
-import { useCycle } from "framer-motion";
 import { navigation } from "@constants";
 
 const HeaderContent: FC = () => {
@@ -29,7 +28,9 @@ const HeaderContent: FC = () => {
         <IconBar className="hidden md:flex" />
 
         <MenuIcon
-          className="md:hidden cursor-pointer"
+          className={`md:hidden cursor-pointer transition-200  ${
+            open ? "opacity-0" : "delay-200"
+          }`}
           onClick={() => setOpen(true)}
         />
       </div>{" "}

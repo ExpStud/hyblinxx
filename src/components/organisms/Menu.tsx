@@ -1,16 +1,8 @@
-import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { CloseIcon, IconBar, NavItem } from "@components";
-import Link from "next/link";
+import { CloseIcon, NavItem } from "@components";
 import { useLockBodyScroll, useOutsideAlerter, useWindowSize } from "@hooks";
-import {
-  fadeVariants,
-  menuChildVariants,
-  midExitAnimation,
-  mobileMenuParent,
-  navigation,
-} from "@constants";
-import Image from "next/image";
+import { menuChildVariants, mobileMenuParent, navigation } from "@constants";
 
 interface Props {
   close: () => void;
@@ -23,11 +15,14 @@ const Menu: FC<Props> = (props: Props) => {
 
   const isMobile: boolean = winWidth < 640;
   const ref = useRef<HTMLDivElement>(null);
+
   //stop page scroll (when modal or menu open)
   useLockBodyScroll(open);
   useOutsideAlerter(ref, close);
 
-  console.log("open", open);
+  useEffect(() => {
+    if (winWidth >= 768) close();
+  }, [winWidth]);
   return (
     <AnimatePresence mode="wait" initial={false}>
       {open === true && (
@@ -47,7 +42,7 @@ const Menu: FC<Props> = (props: Props) => {
           className="rounded-l-3xl bg-[#2F2E3D]/80 backdrop-blur-xl fixed top-0 right-0 z-50 h-[100svh]"
           ref={ref}
         >
-          <motion.div
+          <div
             className="p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto"
             // variants={fadeVariants}
             // initial="closed"
@@ -63,14 +58,6 @@ const Menu: FC<Props> = (props: Props) => {
               onClick={() => close()}
               className="cursor-pointer z-50"
             />
-            <motion.img
-              src="/images/icons/logo-text.svg"
-              width={184}
-              height={25}
-              alt="Hyblinxx"
-              className="mt-8 mb-5"
-              // variants={menuChildVariants}
-            />
             <motion.div
               className="flex flex-col flex-grow items-start gap-3"
               variants={mobileMenuParent}
@@ -78,17 +65,21 @@ const Menu: FC<Props> = (props: Props) => {
               animate={"show"}
               exit={"closed"}
             >
+              <motion.img
+                src="/images/icons/logo-text.svg"
+                width={184}
+                height={25}
+                alt="Hyblinxx"
+                className="mt-8 mb-5"
+                variants={menuChildVariants}
+              />
               {navigation.map((item, index) => (
-                <NavItem
-                  key={index}
-                  href={item.href ?? "/"}
-                  isMobile={isMobile}
-                >
+                <NavItem key={index} href={item.href ?? "/"}>
                   {item.name}
                 </NavItem>
               ))}
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

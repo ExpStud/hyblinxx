@@ -10,16 +10,9 @@ interface Props {
   href: string;
   disabled?: boolean;
   isExternal?: boolean;
-  isMobile?: boolean;
 }
 const NavItem: FC<Props> = (props: Props) => {
-  const {
-    children,
-    href,
-    disabled = false,
-    isExternal = false,
-    isMobile,
-  } = props;
+  const { children, href, disabled = false, isExternal = false } = props;
 
   const router = useRouter();
   const isCurrent = router.pathname === href;
@@ -39,15 +32,11 @@ const NavItem: FC<Props> = (props: Props) => {
         <DisabledItem />
       ) : isExternal ? (
         <a href={href} rel="noreferrer" target="_blank">
-          <Item isCurrent={isCurrent} isMobile={isMobile}>
-            {children}
-          </Item>
+          <Item isCurrent={isCurrent}>{children}</Item>
         </a>
       ) : (
         <Link href={href}>
-          <Item isCurrent={isCurrent} isMobile={isMobile}>
-            {children}
-          </Item>
+          <Item isCurrent={isCurrent}>{children}</Item>
         </Link>
       )}
     </>
@@ -57,10 +46,9 @@ const NavItem: FC<Props> = (props: Props) => {
 interface ItemProps {
   children: ReactNode;
   isCurrent: boolean;
-  isMobile?: boolean;
 }
 const Item: FC<ItemProps> = (props: ItemProps) => {
-  const { children, isCurrent, isMobile } = props;
+  const { children, isCurrent } = props;
   return (
     <motion.div
       className={`flex gap-2 justify-center items-center transition-bg duration-300 py-1 font-rubik font-semibold md:font-inter text-[20px] md:text-xs ${
