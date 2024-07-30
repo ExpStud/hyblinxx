@@ -1,9 +1,10 @@
-import { Dispatch, SetStateAction, FC } from "react";
+import { Dispatch, SetStateAction, FC, use } from "react";
 import { handleAssetLoad } from "@utils";
 import Image from "next/image";
 import { useWindowSize } from "src/hooks";
 import { enterAnimation } from "src/constants";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
@@ -12,12 +13,13 @@ interface Props {
 const LandingView: FC<Props> = (props: Props) => {
   const { setAssets } = props;
   const [winwWidth] = useWindowSize();
+  const router = useRouter();
 
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       <motion.div
         {...enterAnimation}
-        className="absolute-center !top-[40svh] z-10 px-5 md:px-10 lg:px-0 w-full flex items-center justify-center"
+        className="absolute-center !top-[45svh] z-10 px-5 md:px-10 lg:px-0 w-full flex flex-col items-center justify-center gap-10"
       >
         <Image
           src="/images/icons/logo-text.svg"
@@ -25,6 +27,12 @@ const LandingView: FC<Props> = (props: Props) => {
           height={106}
           alt="Hyblinxx"
         />
+        <button
+          className="text-xs uppercase transition-300 hover:text-h-yellow-400"
+          onClick={() => router.push("/inklings")}
+        >
+          enter hyblinxx world
+        </button>
       </motion.div>
       <motion.div
         {...enterAnimation}

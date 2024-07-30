@@ -3,7 +3,7 @@ import { Navigation } from "@types";
 export const navigation: Navigation[] = [
   {
     name: "Inklings",
-    href: "/characters",
+    href: "/inklings",
   },
   {
     name: "Hoodlums",

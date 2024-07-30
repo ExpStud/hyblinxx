@@ -145,18 +145,5 @@ html {
 }
 .mobile-nav {
   border-radius: 24px 0px 0px 24px;
-  background: rgba(47, 46, 61, 0.85);
-  backdrop-filter: blur(23px);
-  -webkit-backdrop-filter: blur(23px);
-  
-}
-
-.nav-blur{
-  background-color: rgba(47, 46, 61, 0.8);
-  content: '';
-  filter: blur(30px);
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  /* margin: -25px -25px -25px 0px; */
-}
+  background: rgba(47, 46, 61, 0.8); 
+} 
