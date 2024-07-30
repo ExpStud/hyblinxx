@@ -23,13 +23,7 @@ const Menu: FC<Props> = (props: Props) => {
 
   useEffect(() => {
     if (winWidth >= 768) close();
-  }, [winWidth]);
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.style.backdropFilter = "blur(23px)";
-    }
-  }, [open]);
+  }, [close, winWidth]);
 
   return (
     <AnimatePresence mode="wait" initial={false}>

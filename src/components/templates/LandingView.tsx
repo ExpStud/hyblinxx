@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, FC } from "react";
 import { handleAssetLoad } from "@utils";
 import Image from "next/image";
-import { ViewContext } from "@contexts";
 import { useWindowSize } from "src/hooks";
 import { enterAnimation } from "src/constants";
 import { motion } from "framer-motion";
@@ -18,7 +17,7 @@ const LandingView: FC<Props> = (props: Props) => {
     <div className="w-full h-full flex flex-col items-center justify-center">
       <motion.div
         {...enterAnimation}
-        className="absolute-center !top-[40svh] z-10 px-5 md:px-10 lg:px-0"
+        className="absolute-center !top-[40svh] z-10 px-5 md:px-10 lg:px-0 w-full flex items-center justify-center"
       >
         <Image
           src="/images/icons/logo-text.svg"
