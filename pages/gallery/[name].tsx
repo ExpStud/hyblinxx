@@ -6,26 +6,26 @@ import {
 } from "next";
 import { useRouter } from "next/router";
 import { PageLayout } from "@components";
-import { hoodlums } from "@constants";
+import { gallery } from "@constants";
 import { Collection } from "src/types";
 import { ParsedUrlQuery } from "querystring";
 
-interface HoodlumProps {
-  hoodlum: Collection;
+interface GalleryProps {
+  item: Collection;
 }
 
-const HoodlumPage = ({ hoodlum }: HoodlumProps) => {
+const GalleryPage = ({ item }: GalleryProps) => {
   return (
     <PageLayout>
-      {!hoodlum ? <div>Inkling not found</div> : <h1>{hoodlum.name}</h1>}
+      {!item ? <div>Inkling not found</div> : <h1>{item.name}</h1>}
     </PageLayout>
   );
 };
 
 // Generates the paths for each hoodlum based on the dataset. This function runs at build time.
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = hoodlums.map((hoodlum) => ({
-    params: { name: hoodlum.name.toLocaleLowerCase().replace(" ", "-") },
+  const paths = gallery.map((item) => ({
+    params: { name: item.name.toLocaleLowerCase().replace(" ", "-") },
   }));
 
   return { paths, fallback: false };
@@ -39,15 +39,15 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>
 ) => {
   const { name } = context.params as Params;
-  const hoodlum = hoodlums.find(
-    (h) => h.name.toLocaleLowerCase().replace(" ", "-") === name
+  const item = gallery.find(
+    (i) => i.name.toLocaleLowerCase().replace(" ", "-") === name
   );
 
   return {
     props: {
-      hoodlum: hoodlum || null,
+      item: item || null,
     },
   };
 };
 
-export default HoodlumPage;
+export default GalleryPage;

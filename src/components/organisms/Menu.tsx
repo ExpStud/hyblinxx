@@ -2,7 +2,13 @@ import { FC, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CloseIcon, IconBar, NavItem } from "@components";
 import { useLockBodyScroll, useOutsideAlerter, useWindowSize } from "@hooks";
-import { menuChildVariants, mobileMenuParent, navigation } from "@constants";
+import {
+  enterAnimation,
+  menuChildVariants,
+  midEnterAnimation,
+  mobileMenuParent,
+  navigation,
+} from "@constants";
 import Link from "next/link";
 
 interface Props {
@@ -44,7 +50,10 @@ const Menu: FC<Props> = (props: Props) => {
           className="fixed top-0 right-0 z-50 h-[100svh]"
           ref={ref}
         >
-          <div className="mobile-nav backdrop-blur-xl p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto">
+          <motion.div
+            className="mobile-nav backdrop-blur-xl p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto"
+            {...midEnterAnimation}
+          >
             <CloseIcon
               onClick={() => close()}
               className="cursor-pointer z-50"
@@ -74,7 +83,7 @@ const Menu: FC<Props> = (props: Props) => {
               ))}
             </motion.div>
             <IconBar className="self-start" />
-          </div>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
