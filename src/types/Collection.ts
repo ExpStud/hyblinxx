@@ -1,8 +1,10 @@
 
 export interface Collection {
-  id: number;
   name: string;
-  src: string;
-  description: string;
-  exchange: string;
+  description: string[];
+  mintAddress: string;
+
+  id?: number;
+  src?: string;
+  exchange?: string;
 }
