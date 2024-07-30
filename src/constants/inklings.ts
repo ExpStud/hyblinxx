@@ -1,6 +1,6 @@
 import { Collection } from "@types";
 
-export const collection: Collection[] = [
+export const inklings: Collection[] = [
   {
     id: 0,
     name: "",

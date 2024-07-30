@@ -1,3 +1,5 @@
 export * from "./framer.config"
-export * from "./collection"
 export * from "./nav"
+export * from "./hoodlums"
+export * from "./inklings"
+export * from "./gallery"

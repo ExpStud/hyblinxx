@@ -44,7 +44,7 @@ const Menu: FC<Props> = (props: Props) => {
           className="fixed top-0 right-0 z-50 h-[100svh]"
           ref={ref}
         >
-          <div className="mobile-nav  backdrop-blur-xl  p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto">
+          <div className="mobile-nav backdrop-blur-xl p-5 relative h-full flex flex-col justify-start gap-5 overflow-auto">
             <CloseIcon
               onClick={() => close()}
               className="cursor-pointer z-50"
