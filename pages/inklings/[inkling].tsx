@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = inklings.map((item) => ({
     params: { inkling: item.name.toLocaleLowerCase().replace(" ", "-") },
   }));
-  console.log("paths", paths);
+
   return { paths, fallback: false };
 };
 

@@ -8,3 +8,15 @@ export interface Collection {
   src?: string;
   exchange?: string;
 }
+
+export enum HoodlumCollections {
+  TheFoundersCollection = "theFounders Collection",
+  TheHonoraries = "theHonoraries",
+  TheAllies = "The Allies",
+  HoodlumsTheStory = "Hoodlums - The Story",
+}
+
+export interface Hoodlums extends Collection {
+  collection: HoodlumCollections;
+
+}
