@@ -6,7 +6,7 @@ const Inklings: NextPage = () => {
   const [assets, setAssets] = useState<boolean[]>([]);
 
   return (
-    <PageLayout headerType="absolute" assets={assets}>
+    <PageLayout assets={assets} fixed>
       <AboutView setAssets={setAssets} />
     </PageLayout>
   );

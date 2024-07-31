@@ -147,3 +147,6 @@ html {
   border-radius: 24px 0px 0px 24px;
   background: rgba(47, 46, 61, 0.8); 
 } 
+.hoodlums-selected-filter {
+  @apply bg-h-purple-300;
+}

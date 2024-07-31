@@ -6,7 +6,7 @@ const Gallery: NextPage = () => {
   const [assets, setAssets] = useState<boolean[]>([]);
 
   return (
-    <PageLayout headerType="absolute" assets={assets}>
+    <PageLayout assets={assets}>
       <AboutView setAssets={setAssets} />
     </PageLayout>
   );

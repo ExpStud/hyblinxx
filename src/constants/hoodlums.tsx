@@ -1,4 +1,23 @@
-import { HoodlumCollections, Hoodlums } from "@types";
+import { HoodlumCollections, HoodlumCollectionsType, Hoodlums } from "@types";
+
+export const hoodlumCollections: HoodlumCollectionsType[] = [
+  {
+    name: HoodlumCollections.TheFoundersCollection,
+    src: "founders.png",
+  },
+  {
+    name: HoodlumCollections.TheHonoraries,
+    src: "honoraries.png",
+  },
+  {
+    name: HoodlumCollections.TheAllies,
+    src: "allies.png",
+  },
+  {
+    name: HoodlumCollections.HoodlumsTheStory,
+    src: "story.png",
+  },
+];
 
 export const hoodlums: Hoodlums[] = [
   {

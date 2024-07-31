@@ -10,8 +10,7 @@ interface Props {
   setAssets: Dispatch<SetStateAction<boolean[]>>;
 }
 
-const LandingView: FC<Props> = (props: Props) => {
-  const { setAssets } = props;
+const LandingView: FC<Props> = ({ setAssets }) => {
   const [winwWidth] = useWindowSize();
   const router = useRouter();
 

@@ -10,13 +10,17 @@ export interface Collection {
 }
 
 export enum HoodlumCollections {
-  TheFoundersCollection = "theFounders Collection",
-  TheHonoraries = "theHonoraries",
+  TheFoundersCollection = "The Founders Collection",
+  TheHonoraries = "The Honoraries",
   TheAllies = "The Allies",
   HoodlumsTheStory = "Hoodlums - The Story",
 }
 
 export interface Hoodlums extends Collection {
   collection: HoodlumCollections;
+}
 
+export interface HoodlumCollectionsType {
+  name: HoodlumCollections;
+  src: string;
 }

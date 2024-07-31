@@ -23,15 +23,18 @@ const Modal = dynamic(() => import("./molecules/Modal"));
 const IconBar = dynamic(() => import("./molecules/IconBar"));
 const SplashScreen = dynamic(() => import("./molecules/SplashScreen"));
 const HeaderContent = dynamic(() => import("./molecules/HeaderContent"));
+const HoodlumsFilterItem = dynamic(() => import("./molecules/HoodlumsFilterItem"));
 //organisms
 const Header = dynamic(() => import("./organisms/Header"));
 const Footer = dynamic(() => import("./organisms/Footer"));
 const Menu = dynamic(() => import("./organisms/Menu"));
 const ImageModal = dynamic(() => import("./organisms/ImageModal"));
+const HoodlumsFilter = dynamic(() => import("./organisms/HoodlumsFilter"));
 //templates
 const PageLayout = dynamic(() => import("./templates/PageLayout"));
 const LandingView = dynamic(() => import("./templates/LandingView"));
 const AboutView = dynamic(() => import("./templates/AboutView"));
+const HoodlumsView = dynamic(() => import("./templates/HoodlumsView"));
 
 export {
   PageHead,
@@ -60,5 +63,8 @@ export {
   ImageShimmer,
   HeaderContent,
   AboutView,
-  ImageModal
+  ImageModal,
+  HoodlumsView,
+  HoodlumsFilter,
+  HoodlumsFilterItem,
 }
